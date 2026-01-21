@@ -5,5 +5,9 @@ test('2 + 3 harus 5', () => {
 });
 
 test('5 - 3 harus 2', () => {
-  expect(kurang(5, 3)).toBe(1);
+  expect(kurang(5, 3)).toBe(2);
 });
+
+test('tipe data harus number', () => {
+  expect(typeof tambah(2, 3)).toBe('number');
+})
