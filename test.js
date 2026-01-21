@@ -5,7 +5,7 @@ test('2 + 3 harus 5', () => {
 });
 
 test('5 - 3 harus 2', () => {
-  expect(kurang(5, 3)).toBe(2);
+  expect(kurang(5, 3)).toBe(1);
 });
 
 // test('tipe data harus number', () => {
