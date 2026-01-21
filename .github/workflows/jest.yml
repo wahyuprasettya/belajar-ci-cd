@@ -23,3 +23,19 @@ jobs:
 
       - name: Run unit test with Jest
         run:  npm test
+
+ # Telegram notification jika test gagal
+      - name: Notify Telegram on Test Failure
+        if: failure()
+        run: |
+          curl -s -X POST https://api.telegram.org/bot${{ secrets.TELEGRAM_BOT_TOKEN }}/sendMessage \
+          -d chat_id=${{ secrets.TELEGRAM_CHAT_ID }} \
+          -d text="❌ Unit test FAILED in repo ${{ github.repository }} (branch: ${{ github.ref_name }}) by ${{ github.actor }}"
+
+      # Telegram notification jika test sukses
+      - name: Notify Telegram on Test Success
+        if: success()
+        run: |
+          curl -s -X POST https://api.telegram.org/bot${{ secrets.TELEGRAM_BOT_TOKEN }}/sendMessage \
+          -d chat_id=${{ secrets.TELEGRAM_CHAT_ID }} \
+          -d text="✅ Unit test SUCCESS in repo ${{ github.repository }} (branch: ${{ github.ref_name }}) by ${{ github.actor }}"
