@@ -5,5 +5,5 @@ test('2 + 3 harus 5', () => {
 });
 
 test('5 - 3 harus 2', () => {
-  expect(kurang(5, 3)).toBe(3);
+  expect(kurang(5, 3)).toBe(2);
 });
